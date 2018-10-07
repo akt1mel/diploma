@@ -7,8 +7,8 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Вход';
+
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -28,6 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
+        <?= $form->field($model, 'rememberMe')->checkbox([
+            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+        ]) ?>
 
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
