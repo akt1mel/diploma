@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -38,6 +39,9 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => 'Администраторы', 'url' => ['./admin/index']],
+            ['label' => 'Темы', 'url' => ['./theme/index']],
+            ['label' => 'Вопросы', 'url' => ['./question/index']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -55,7 +59,13 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
+
+
     <div class="container">
+        <ul class="inline">
+            <li><a href="<?= \Yii\helpers\Url::to(['admin/index'])?>">Администраторы</a></li>
+        </ul>
+
         <?= $content ?>
     </div>
 </div>
