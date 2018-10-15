@@ -24,6 +24,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            [
+                'attribute' => 'questions',
+                'value' => function($data){
+                    return $data->getQuestionCount();
+                }
+            ],
+            [
+                'attribute' => 'new_questions',
+                'value' => function($data){
+                    return $data->getNewQuestionCount();
+                }
+            ],
+            [
+                'attribute' => 'active_questions',
+                'value' => function($data){
+                    return $data->getActiveQuestionCount();
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

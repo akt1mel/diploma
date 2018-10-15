@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\admin\models\Question;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -18,5 +19,4 @@ class Theme extends ActiveRecord
     {
         return self::find()->all();
     }
-
 }

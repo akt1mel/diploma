@@ -15,7 +15,7 @@ use Yii;
  * @property int $status
  * @property string $created
  *
- * @property Answer[] $answers
+ * @property Answer $answer
  * @property Theme $theme
  */
 class Question extends \yii\db\ActiveRecord
@@ -66,9 +66,9 @@ class Question extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAnswers()
+    public function getAnswer()
     {
-        return $this->hasMany(Answer::className(), ['question_id' => 'id']);
+        return $this->hasOne(Answer::className(), ['question_id' => 'id']);
     }
 
     /**
@@ -78,4 +78,17 @@ class Question extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Theme::className(), ['id' => 'theme_id']);
     }
+
+
+    public function changeStatus($status ,$id)
+    {
+        if($status == 'save'){
+           return $this->updateAll(['status' => Question::ACTIVE_QUESTION], "id = $id");
+        } elseif ($status == 'delete') {
+            return $this->updateAll(['status' => Question::NEW_QUESTION], "id = $id");
+        }
+
+        return null;
+    }
+
 }

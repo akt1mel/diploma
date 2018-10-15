@@ -52,4 +52,5 @@ class Admin extends \yii\db\ActiveRecord
         $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
         return $this->save();
     }
+
 }

@@ -21,7 +21,7 @@ class m181002_175501_create_question_table extends Migration
             'status' => $this->integer()->notNull(),
             'created' => $this->dateTime()->notNull(),
         ]);
-        $this->addForeignKey('theme_question_id','question', 'theme_id', 'theme', 'id');
+        $this->addForeignKey('theme_question_id','question', 'theme_id', 'theme', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**

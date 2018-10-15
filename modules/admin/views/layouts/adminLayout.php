@@ -42,6 +42,7 @@ AppAsset::register($this);
             ['label' => 'Администраторы', 'url' => ['./admin/index']],
             ['label' => 'Темы', 'url' => ['./theme/index']],
             ['label' => 'Вопросы', 'url' => ['./question/index']],
+            ['label' => 'Ответы', 'url' => ['./answer/index']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -62,10 +63,6 @@ AppAsset::register($this);
 
 
     <div class="container">
-        <ul class="inline">
-            <li><a href="<?= \Yii\helpers\Url::to(['admin/index'])?>">Администраторы</a></li>
-        </ul>
-
         <?= $content ?>
     </div>
 </div>

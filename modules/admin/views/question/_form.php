@@ -24,7 +24,7 @@ use app\modules\admin\models\Theme;
 
     <?= $form->field($model, 'status')->dropDownList([$model::NEW_QUESTION => 'Новый', $model::ACTIVE_QUESTION => 'Активный', $model::HIDDEN_QUESTION => 'Скрытый']) ?>
 
-    <?= $form->field($model, 'created')->textInput() ?>
+    <?= $form->field($model, 'created')->textInput(['value' => date("Y-m-d H:i:s")])?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

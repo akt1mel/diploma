@@ -2,27 +2,28 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\Question;
 use Yii;
-use app\modules\admin\models\Theme;
+use app\modules\admin\models\Answer;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ThemeController implements the CRUD actions for Theme model.
+ * AnswerController implements the CRUD actions for Answer model.
  */
-class ThemeController extends DefaultController
+class AnswerController extends DefaultController
 {
 
     /**
-     * Lists all Theme models.
+     * Lists all Answer models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Theme::find(),
+            'query' => Answer::find()->with('question'),
         ]);
 
         return $this->render('index', [
@@ -31,7 +32,7 @@ class ThemeController extends DefaultController
     }
 
     /**
-     * Displays a single Theme model.
+     * Displays a single Answer model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -44,13 +45,13 @@ class ThemeController extends DefaultController
     }
 
     /**
-     * Creates a new Theme model.
+     * Creates a new Answer model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Theme();
+        $model = new Answer();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -62,7 +63,7 @@ class ThemeController extends DefaultController
     }
 
     /**
-     * Updates an existing Theme model.
+     * Updates an existing Answer model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -82,7 +83,7 @@ class ThemeController extends DefaultController
     }
 
     /**
-     * Deletes an existing Theme model.
+     * Deletes an existing Answer model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -96,19 +97,18 @@ class ThemeController extends DefaultController
     }
 
     /**
-     * Finds the Theme model based on its primary key value.
+     * Finds the Answer model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Theme the loaded model
+     * @return Answer the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Theme::findOne($id)) !== null) {
+        if (($model = Answer::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

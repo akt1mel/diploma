@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 
+use app\models\Theme;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -11,6 +12,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\AddQuestionForm;
 use app\models\User;
+
 
 
 class SiteController extends Controller
@@ -48,6 +50,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
         return $this->render('index');
     }
 
