@@ -4,6 +4,7 @@ namespace app\controllers;
 
 
 use app\models\Theme;
+use app\modules\admin\models\Question;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -50,8 +51,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
-        return $this->render('index');
+        $themes = Theme::find()->all();
+        $questions = Question::find()->joinWith('theme')->joinWith('answer')->where('question.status = :active',[':active' => Question::ACTIVE_QUESTION])->asArray()->all();
+        return $this->render('index',[
+            'questions' => $questions,
+            'themes' => $themes,
+        ]);
     }
 
     /**
@@ -93,9 +98,7 @@ class SiteController extends Controller
 
         if(!empty($model)) {
 
-            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-
-                $model->addQuestion();
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
                 Yii::$app->session->setFlash('AddQuestionFormSubmitted');
 

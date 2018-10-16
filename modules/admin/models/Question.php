@@ -82,10 +82,11 @@ class Question extends \yii\db\ActiveRecord
 
     public function changeStatus($status ,$id)
     {
+
         if($status == 'save'){
-           return $this->updateAll(['status' => Question::ACTIVE_QUESTION], "id = $id");
+           return $this->updateAll(['status' => Question::ACTIVE_QUESTION], "id = :id",[':id' => $id]);
         } elseif ($status == 'delete') {
-            return $this->updateAll(['status' => Question::NEW_QUESTION], "id = $id");
+            return $this->updateAll(['status' => Question::NEW_QUESTION], "id = :id",[':id' => $id]);
         }
 
         return null;

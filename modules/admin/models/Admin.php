@@ -47,10 +47,14 @@ class Admin extends \yii\db\ActiveRecord
         ];
     }
 
-    public function addAdmin()
+
+    public function beforeSave($insert)
     {
-        $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
-        return $this->save();
+        if($insert) {
+            $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+        }
+        return parent::beforeSave($insert);
     }
+
 
 }

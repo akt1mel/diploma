@@ -35,18 +35,17 @@ class AddQuestionForm extends Theme
             [['theme_id','user_name', 'user_email', 'description'], 'required'],
             //Проверка email на правильность ввода
             ['user_email', 'email'],
-            //[['created'],'date', 'format' => 'php:Y-m-d H:i:s'],
         ];
     }
 
 
-    public function addQuestion()
+    public function beforeSave($insert)
     {
-        $this->status = self::NEW_QUESTION;
-        $this->created = date('Y-m-d H:i:s');
-
-        return $this->save();
+        if($insert) {
+            $this->status = self::NEW_QUESTION;
+            $this->created = date('Y-m-d H:i:s');
+        }
+        return parent::beforeSave($insert);
     }
-
 
 }

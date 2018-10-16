@@ -74,4 +74,5 @@ class Answer extends \yii\db\ActiveRecord
         $question = new Question();
         $question->changeStatus('delete',$this->question_id);
     }
+
 }
