@@ -66,7 +66,7 @@ class Answer extends \yii\db\ActiveRecord
         $question->changeStatus('save',$this->question_id);
     }
 
-    //Установка статуса "Ожидает ответа" после удаления вопроса
+    //Установка статуса "Ожидает ответа" после удаления ответа
     public function afterDelete()
     {
         parent::afterDelete();

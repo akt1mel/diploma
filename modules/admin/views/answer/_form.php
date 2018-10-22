@@ -14,7 +14,7 @@ use \app\modules\admin\models\Question;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'question_id')->dropDownList(ArrayHelper::map(Question::find()->where(['status' => Question::NEW_QUESTION])->all(), 'id', 'description')) ?>
+    <?= $form->field($model, 'question_id')->dropDownList(ArrayHelper::map(Question::find()->where(['or',['status' => Question::NEW_QUESTION],['status' => Question::HIDDEN_QUESTION]])->all(), 'id', 'description')) ?>
 
     <?= $form->field($model, 'answer')->textarea(['rows' => 6]) ?>
 
