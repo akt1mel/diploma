@@ -51,8 +51,7 @@ class AdminController extends DefaultController
     {
         $model = new Admin();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->addAdmin();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
