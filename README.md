@@ -68,7 +68,7 @@ php yii migrate
 
 Структура итоговой базы данных:
 
-![База данных](https://image.ibb.co/iHHWgV/db.jpg)
+![База данных](https://image.ibb.co/kgS9bV/db.jpg)
 
 ### Веб-сервер
 
@@ -76,7 +76,8 @@ php yii migrate
 
 
 
-### Хостинг
+Хостинг
+------------
 
 Проект доступен по ссылке http://kostyavas.94.fvds.ru/
 
