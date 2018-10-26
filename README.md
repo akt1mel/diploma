@@ -73,3 +73,14 @@ php yii migrate
 ### Веб-сервер
 
 В настройках веб-сервера требуется указать `DocumentRoot "path/to/diploma/web"`
+
+
+
+### Хостинг
+
+Проект доступен по ссылке http://kostyavas.94.fvds.ru/
+
+Для входа в УЗ администратора:
+Login: Admin
+Passw: Admin
+
