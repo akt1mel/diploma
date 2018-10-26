@@ -58,6 +58,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+        <?= Yii::$app->user->isGuest ? "" : "<a href='/admin' class='btn btn-info' role='button'>Панель Администратора</a>"; ?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

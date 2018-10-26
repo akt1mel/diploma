@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Question */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Questions', 'url' => ['index']];
+$this->title = $model->description;
+$this->params['breadcrumbs'][] = ['label' => 'Вопросы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
